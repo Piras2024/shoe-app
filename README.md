@@ -1,3 +1,6 @@
+
+![beach cow](https://github.com/Piras2024/shoe-app/assets/136451126/b13615b6-bfab-495d-83ab-9707790937c4)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
