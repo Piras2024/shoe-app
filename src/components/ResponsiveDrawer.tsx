@@ -54,7 +54,7 @@ export default function ResponsiveDrawer(props: Props) {
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
-            <ListItemText primary="Dashboard" />
+            <ListItemText primary="Home" />
           </ListItemButton>
         </ListItem>
         <ListItem>

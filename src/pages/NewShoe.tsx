@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Stack, TextField, Typography } from '@mui/material'
+import { Box, Button, Grid, Paper, Stack, TextField, Typography } from '@mui/material'
 import React from 'react'
 import SendIcon from '@mui/icons-material/Send';
 import {Form} from 'react-router-dom'
@@ -17,23 +17,23 @@ const NewShoe = (props: Props) => {
     //   noValidate
     //   autoComplete="off"
     // >
-    <Box sx={{boxShadow:' rgba(0, 0, 0, 0.1) 20px 23px 6px -8px', borderRadius:'15px'}}>
+    <Paper elevation={3}>
       <Grid
       component={Form}
     container
-    spacing={1}
+    spacing={0}
     columns={3}
     // direction="row"
     alignItems="center"
     justifyContent="center"
-    sx={{ margin:'8% auto', '& .MuiTextField-root': {width: '40ch' }}}
+    sx={{ margin:'8% auto', '& .MuiTextField-root': {width: '35vw' , maxWidth:'40ch' }}}
     rowSpacing={3}
     // columns={{ xs: 4, sm: 8, md: 12 }}
   >
       <Grid item xs={12} display='flex' justifyContent='center'>
         <Stack>
-        <Typography variant='h4'>Lavorazione Lotto</Typography>
-        <Typography variant='body1'>inserisci le informazioni del nuovo lotto</Typography>
+        <Typography variant='h4'>Lavorazione Scatola</Typography>
+        <Typography variant='body1'>inserisci le informazioni del nuova scatola</Typography>
         </Stack>
       </Grid>
       <Grid item xs display='flex' justifyContent='center'>
@@ -59,7 +59,7 @@ const NewShoe = (props: Props) => {
       
       </Grid>
     </Grid>
-    </Box>
+    </Paper>
   )
 }
 

@@ -1,32 +1,29 @@
-import { MenuItem, Stack, TextField, Typography } from "@mui/material";
+import { Box, Card, CardContent, MenuItem, Stack, TextField, Typography } from "@mui/material";
 import React, { ChangeEvent, useState } from "react";
-import Shoe from "../types/Shoe";
-
+import Shoe from "../modules/Shoe";
 
 type Props = {
-  model: string
-  stock: Shoe[]
+  model: string;
+  stock: Shoe[];
 };
 
 const ShoeCard = (props: Props) => {
-  
-  const sizes = props.stock.reduce((sizes: number[], currentObject) => {
-    if (!sizes.some((size) => size === currentObject.size)) {
-      sizes.push(currentObject.size);
-    }
-    return sizes;
-  }, []).sort();
-  
+  const sizes = props.stock
+    .reduce((sizes: number[], currentObject) => {
+      if (!sizes.some((size) => size === currentObject.size)) {
+        sizes.push(currentObject.size);
+      }
+      return sizes;
+    }, [])
+    .sort();
+
   const colors = props.stock.reduce((colors: string[], currentObject) => {
     if (!colors.some((color) => color === currentObject.color)) {
       colors.push(currentObject.color);
     }
     return colors;
   }, []);
-
-  
-
-  const [quantity, setQuantity] = useState<number>(0);
+  const [quantityAndCost, setQuantityAndCost] = useState<number[]>([0, 0]);
   const [size, setSize] = useState<number>();
   const [color, setColor] = useState<string>();
   const handleSizeInput = (event: ChangeEvent<HTMLInputElement>) => {
@@ -35,9 +32,9 @@ const ShoeCard = (props: Props) => {
       (shoe) => shoe.size === +event.target.value && shoe.color === color
     );
     if (findShoe) {
-      setQuantity(findShoe.quantity);
+      setQuantityAndCost([findShoe.quantity, findShoe.price]);
     } else {
-      setQuantity(0);
+      setQuantityAndCost([0, 0]);
     }
   };
   const handleColorInput = (event: ChangeEvent<HTMLInputElement>) => {
@@ -46,61 +43,57 @@ const ShoeCard = (props: Props) => {
       (shoe) => shoe.size === size && shoe.color === event.target.value
     );
     if (findShoe) {
-      setQuantity(findShoe.quantity);
+      setQuantityAndCost([findShoe.quantity, findShoe.price]);
     } else {
-      setQuantity(0);
+      setQuantityAndCost([0, 0]);
     }
   };
   return (
+    <Card >
+      <CardContent>
+
     <Stack direction="row" spacing={2}>
       <Typography>Modello: {props.model}</Typography>
-      {/* <TextField
-        id="input-taglia"
-        type="number"
-        label="Taglia"
-        variant="outlined"
-        onChange={handleSizeInput}
-      /> */}
-        <TextField
-          id="select-size"
-          select
-          label="Taglia"
-          size="small"
-          // defaultValue='40'
-          onChange={handleSizeInput}
-          // helperText="seleziona una taglia"
-          sx={{width:'10ch'}}
-        >
-          {sizes.map((size) => (
-            <MenuItem key={size} value={size}>
-              {size}
-            </MenuItem>
-          ))}
-        </TextField>
-      {/* <TextField
-        id="input-colore"
-        label="Colore"
-        variant="outlined"
-        onChange={handleColorInput}
-      /> */}
       <TextField
-          id="select-color"
-          select
-          label="Colore"
-          // defaultValue='white'
-          onChange={handleColorInput}
-          // helperText="seleziona una taglia"
-          size="small"
-          sx={{width:'15ch'}}
-        >
-          {colors.map((color) => (
-            <MenuItem key={color} value={color}>
-              {color}
-            </MenuItem>
-          ))}
-        </TextField>
-      <Typography>Quantità: {quantity}</Typography>
+        id="select-size"
+        select
+        label="Taglia"
+        size="small"
+        // defaultValue='40'
+        onChange={handleSizeInput}
+        sx={{ width: "10ch" }}
+      >
+        {sizes.map((size) => (
+          <MenuItem key={size} value={size}>
+            {size}
+          </MenuItem>
+        ))}
+      </TextField>
+      <TextField
+        id="select-color"
+        select
+        label="Colore"
+        // defaultValue='white'
+        onChange={handleColorInput}
+        size="small"
+        sx={{ width: "15ch" }}
+      >
+        {colors.map((color) => (
+          <MenuItem key={color} value={color}>
+            {color}
+          </MenuItem>
+        ))}
+      </TextField>
+      {quantityAndCost[0] === 0 ? (
+        <Typography>Non in Stock!</Typography>
+      ) : (
+        <Typography>
+          Quantità: {quantityAndCost[0]} Prezzo: {quantityAndCost[1]}€
+        </Typography>
+      )}
     </Stack>
+      </CardContent>
+    </Card>
   );
 };
 
