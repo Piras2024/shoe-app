@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Paper, Stack, TextField, Typography } from '@mui/material'
+import { Button, Grid, Paper, Stack, TextField, Typography } from '@mui/material'
 import React from 'react'
 import SendIcon from '@mui/icons-material/Send';
 import {Form} from 'react-router-dom'
@@ -26,7 +26,7 @@ const NewShoe = (props: Props) => {
     // direction="row"
     alignItems="center"
     justifyContent="center"
-    sx={{ margin:'8% auto', '& .MuiTextField-root': {width: '35vw' , maxWidth:'40ch' }}}
+    sx={{ margin:'8% auto', '& .MuiTextField-root': {width: '30vw' , maxWidth:'40ch' }}}
     rowSpacing={3}
     // columns={{ xs: 4, sm: 8, md: 12 }}
   >

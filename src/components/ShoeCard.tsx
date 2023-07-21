@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, MenuItem, Stack, TextField, Typography } from "@mui/material";
+import { Card, CardContent, MenuItem, Stack, TextField, Typography } from "@mui/material";
 import React, { ChangeEvent, useState } from "react";
 import Shoe from "../modules/Shoe";
 

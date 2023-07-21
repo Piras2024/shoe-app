@@ -1,7 +1,6 @@
-import React, { ChangeEvent, useState } from 'react'
 import Shoe from '../modules/Shoe'
 import ShoeCard from '../components/ShoeCard'
-import { Stack, TextField, Typography } from '@mui/material'
+import { Stack } from '@mui/material'
 const DUMMY_SHOES = [
   new Shoe('Air max',42,'white',3,90),
   new Shoe('Air max',41,'white',2,90),
